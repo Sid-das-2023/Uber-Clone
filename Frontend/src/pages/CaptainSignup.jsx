@@ -142,7 +142,7 @@ const CaptainSignup = () => {
             </select>
           </div>
           <button className='bg-[#111] mb-3 rounded px-4 py-2 w-full text-lg text-[#fff] font-semibold'>
-            Sign up
+            Create Captain Account
           </button>
         </form>
         <p className='text-center'>
