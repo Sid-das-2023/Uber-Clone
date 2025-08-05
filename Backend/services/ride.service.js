@@ -28,13 +28,15 @@ async function getFare(origin, destination) {
     };
 
     const fare = {
-        auto: baseFare.auto + ((distanceTime.distance.value / 1000) * fareRates.auto) + (distanceTime.duration.value / 60 * timeRates.auto),
-        car: baseFare.car + ((distanceTime.distance.value / 1000) * fareRates.car) + (distanceTime.duration.value / 60 * timeRates.car),
-        motorcycle: baseFare.motorcycle + ((distanceTime.distance.value / 1000) * fareRates.motorcycle) + (distanceTime.duration.value / 60 * timeRates.motorcycle)
+        auto: Math.round(baseFare.auto + ((distanceTime.distance.value / 1000) * fareRates.auto) + (distanceTime.duration.value / 60 * timeRates.auto)),
+        car: Math.round(baseFare.car + ((distanceTime.distance.value / 1000) * fareRates.car) + (distanceTime.duration.value / 60 * timeRates.car)),
+        motorcycle: Math.round(baseFare.motorcycle + ((distanceTime.distance.value / 1000) * fareRates.motorcycle) + (distanceTime.duration.value / 60 * timeRates.motorcycle))
     };
 
     return fare;
 }
+
+module.exports.getFare = getFare;
 
 function getOTP(num) {
     if (!num || num <= 0) {
@@ -59,7 +61,7 @@ module.exports.createRide = async ({
         user: userId,
         origin,
         destination,
-        otp: getOTP(4),
+        otp: getOTP(6),
         fare: fare[vehicleType]
     });
 
